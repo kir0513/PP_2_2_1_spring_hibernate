@@ -12,10 +12,10 @@ public class Car {
     private String model;
 
     @Column(name = "series")
-    private String series;
+    private int series;
     public Car(){}
 
-    public Car(Long id, String model, String series) {
+    public Car(Long id, String model, int series) {
         this.id = id;
         this.model = model;
         this.series = series;
@@ -37,11 +37,11 @@ public class Car {
         this.model = model;
     }
 
-    public String getSeries() {
+    public int getSeries() {
         return series;
     }
 
-    public void setSeries(String series) {
+    public void setSeries(int series) {
         this.series = series;
     }
 }
