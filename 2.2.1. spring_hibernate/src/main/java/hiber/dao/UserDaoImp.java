@@ -12,10 +12,14 @@ import java.util.List;
 @Repository
 public class UserDaoImp implements UserDao {
 
-   @Autowired
-   private SessionFactory sessionFactory;
+   private final SessionFactory sessionFactory;
 
-   @Override
+    public UserDaoImp(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+
+    @Override
    public void add(User user) {
       sessionFactory.getCurrentSession().save(user);
    }
@@ -27,17 +31,41 @@ public class UserDaoImp implements UserDao {
       return query.getResultList();
    }
 
-
-
-
+ /*   @Override
+    @SuppressWarnings("unchecked")
     public List<User> getUserByCarModelAndCarSeries(String model, int series) {
         Query query = sessionFactory.getCurrentSession()
                 //.createQuery("from User where Car.model = :paramModel and Car.series = :paramSeries")
                 .createQuery("from User as u where u.car.model = :paramModel and u.car.series = :paramSeries")
                 .setParameter("paramModel", model)
                 .setParameter("paramSeries", series);
-        return (List<User>) query.getResultList();
+        return (List<User>) query.getSingleResult();
     }
+
+  */
+
+    @Override
+    public List<User> getUserByCarModelAndCarSeries(String model, int series) {
+        Query query = sessionFactory.getCurrentSession()
+                //.createQuery("from User where Car.model = :paramModel and Car.series = :paramSeries")
+                .createQuery("from User as u where u.car.model = :paramModel and u.car.series = :paramSeries")
+                .setParameter("paramModel", model)
+                .setParameter("paramSeries", series);
+        return (List<User>) query.getSingleResult();
+    }
+/*  @Override
+    @SuppressWarnings("unchecked")
+    public List<User> getUserByCarModelAndCarSeries(String model, int series) {
+        Query query = sessionFactory.getCurrentSession()
+                //.createQuery("from User where Car.model = :paramModel and Car.series = :paramSeries")
+                .createQuery("from User as u where u.car.model = :paramModel and u.car.series = :paramSeries")
+                .setParameter("paramModel", model)
+                .setParameter("paramSeries", series);
+        return (List<User>) query.getSingleResult();
+
+    }
+
+   */
 
 
 

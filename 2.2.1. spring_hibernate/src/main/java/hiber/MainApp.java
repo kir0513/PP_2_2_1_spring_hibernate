@@ -50,6 +50,7 @@ public class MainApp {
       }
       System.out.println("\n=== ок");
 
+      //System.out.println(userService.getUserByCarModelAndCarSeries("asd", 1));
       context.close();
    }
 }

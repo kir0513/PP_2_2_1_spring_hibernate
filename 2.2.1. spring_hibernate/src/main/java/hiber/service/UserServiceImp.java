@@ -30,7 +30,6 @@ public class UserServiceImp implements UserService {
    @Transactional(readOnly = true)
    //public User getSingelUserByCarModelAndCarSeries(String model, int series) {
      // return userDao.getSingelUserByCarModelAndCarSeries(model, series);
-
    public List<User> getUserByCarModelAndCarSeries(String model, int series) {
       return (List<User>)userDao.getUserByCarModelAndCarSeries(model, series);
    }
