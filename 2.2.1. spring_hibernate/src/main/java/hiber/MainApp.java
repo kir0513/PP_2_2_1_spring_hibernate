@@ -34,15 +34,15 @@ public class MainApp {
       Car car3 = new Car("Audi", 3);
       Car car4 = new Car("Lada", 1);
 
-      System.out.println("\n===  РЎРѕР·РґР°РµРј РЅРµСЃРєРѕР»СЊРєРѕ РїРѕР»СЊР·РѕРІР°С‚РµР»РµР№ СЃ РјР°С€РёРЅР°РјРё, РґРѕР±Р°РІР»СЏРµРј РёС… РІ Р±Р°Р·Сѓ РґР°РЅРЅС‹С…");
+      System.out.println("\n===  Создаем несколько пользователей с машинами, добавляем их в базу данных");
       userService.add(new User("User5", "Lastname5", "user5@mail.ru", car1));
       userService.add(new User("User6", "Lastname6", "user6@mail.ru", car2));
       userService.add(new User("User7", "Lastname7", "user7@mail.ru", car3));
       userService.add(new User("User8", "Lastname8", "user8@mail.ru", car4));
       System.out.println("\n=== ok");
 
-      System.out.println("\n=== РџРѕР»СѓС‡Р°РµРј РїРѕР»СЊР·РѕРІР°С‚РµР»СЏ РёР· Р‘Р” РїРѕ РјР°С€РёРЅРµ");
-
+      System.out.println("\n=== Получаем пользователя из БД по машине");
+      System.out.println(userService.getSingelUserByCarModelAndCarSeries("BMW", 7));
       context.close();
    }
 }
